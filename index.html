@@ -1,20 +1,242 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>SEFA</title>
-<script>
-  (function () {
-    var lang = (navigator.language || 'en').toLowerCase();
-    var target = 'en.html';
-    if (lang.indexOf('de') === 0) target = 'de.html';
-    else if (lang.indexOf('tr') === 0) target = 'tr.html';
-    window.location.replace(target);
-  })();
-</script>
-<meta http-equiv="refresh" content="0; url=en.html">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEFA | Soziale Event-Begleitungs-App</title>
+<meta name="description" content="SEFA bringt Menschen in Zürich zusammen, die nicht allein zu Konzerten, Festivals oder ins Theater gehen möchten. Gemeinsam erleben." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#08281f;
+  --green-2:#0f4a36;
+  --cream:#fbf6ea;
+  --cream-2:#f3ead8;
+  --sand:#c6a25e;
+  --sand-2:#e6d3ad;
+  --ink:#0b1f18;
+  --muted:#68756f;
+  --line:rgba(8,40,31,.12);
+  --card:#fffdf7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 70% 8%,#f3ead8 0,#fbf6ea 26%,#fffaf0 62%,#f8f0df 100%);}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh;overflow:hidden}
+.container{width:min(1180px,calc(100% - 48px));margin:0 auto}
+header.top{padding:28px 0;border-bottom:1px solid var(--line)}
+.brand{font-family:"DM Serif Display",serif;font-size:24px;letter-spacing:.02em;color:var(--green)}
+.lang{display:flex;gap:16px;font-size:13px;font-weight:600;align-items:center}
+.lang a{color:var(--muted);transition:color .2s}
+.lang a.active{color:var(--sand)}
+main{padding:80px 0}
+h1{font-family:"DM Serif Display",serif;font-size:52px;line-height:1.1;color:var(--green);margin:0 0 20px;letter-spacing:.02em}
+h1 .accent{font-style:italic;color:var(--sand)}
+.lede{font-size:18px;line-height:1.6;color:var(--ink);max-width:580px;margin-bottom:32px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px}
+.hero > div:first-child{z-index:10}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:all .3s}
+.btn.play{background:var(--sand);color:#fff;width:280px;justify-content:center}
+.btn.play:hover{background:var(--sand-2)}
+.btn.apple{background:transparent;color:var(--green);border:1px solid var(--green);width:280px;justify-content:center}
+.btn.apple:hover{background:var(--cream-2)}
+.badge{display:inline-block;background:var(--green);color:var(--cream);padding:3px 8px;border-radius:4px;font-size:11px;font-weight:800;margin-left:6px}
+.signature{position:relative;height:300px;display:flex;align-items:center;justify-content:center}
+.signature svg{width:100%;max-width:320px;height:auto}
+.path-line{stroke:var(--sand);stroke-width:2;fill:none;stroke-linecap:round}
+.origin-dot{fill:var(--green);opacity:.6}
+.meet-dot{fill:var(--sand)}
+.label{font-family:Inter,sans-serif;font-size:13px;font-weight:600;fill:var(--sand);letter-spacing:.01em}
+@media (max-width:768px){
+  .hero{grid-template-columns:1fr;gap:32px;margin-bottom:48px}
+  .signature{height:200px}
+  h1{font-size:36px}
+  .lede{font-size:16px}
+  .cta-row{flex-direction:column}
+  .btn{width:100%}
+}
+.section{margin-bottom:80px}
+.section-eyebrow{font-size:12px;font-weight:800;color:var(--sand);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.section h2{font-family:"DM Serif Display",serif;font-size:40px;color:var(--green);line-height:1.2;margin:0 0 48px;max-width:620px}
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px}
+.showcase-item{border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(15,31,26,.08);transition:transform .3s}
+.showcase-item.raised{transform:translateY(-40px)}
+.showcase-item img{width:100%;display:block;background:var(--cream)}
+.showcase-cap{padding:16px 20px;background:var(--card);font-size:14px;font-weight:600;color:var(--green);text-align:center}
+@media (max-width:768px){
+  .showcase-grid{grid-template-columns:1fr;gap:20px}
+  .showcase-item.raised{transform:none}
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px}
+.step{padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--line)}
+.step .num{font-family:"DM Serif Display",serif;font-size:48px;color:var(--sand);line-height:1;margin-bottom:16px}
+.step h3{font-family:"DM Serif Display",serif;font-size:20px;color:var(--green);margin:0 0 12px}
+.step p{font-size:15px;line-height:1.6;color:var(--ink);margin:0}
+@media (max-width:768px){
+  .steps{grid-template-columns:1fr}
+}
+.features-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.feature{text-align:center}
+.icon{width:56px;height:56px;color:var(--sand);margin:0 auto 16px;display:block}
+.feature h3{font-family:"DM Serif Display",serif;font-size:18px;color:var(--green);margin:0 0 8px}
+.feature p{font-size:15px;line-height:1.6;color:var(--ink);margin:0}
+@media (max-width:768px){
+  .features-row{grid-template-columns:1fr}
+}
+.band{background:var(--green);color:var(--cream);padding:48px;border-radius:16px;text-align:center;margin-bottom:80px;font-family:"DM Serif Display",serif;font-size:32px;line-height:1.3}
+.band .gold{color:var(--sand);font-weight:700}
+footer{padding:48px 0 32px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:32px}
+.footer-brand p{font-size:14px;margin:12px 0 0}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.footer-col h4{color:var(--green);font-weight:700;margin:0 0 12px;font-size:14px}
+.footer-col span,.footer-col a{display:block;margin-bottom:8px;font-size:13px}
+.footer-col a{color:var(--green)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:12px;padding-top:24px;border-top:1px solid var(--line)}
+@media (max-width:768px){
+  .footer-top,.footer-links,.footer-bottom{grid-template-columns:1fr;gap:20px}
+}
+</style>
 </head>
 <body>
-  <p><a href="tr.html">Türkçe</a> · <a href="de.html">Deutsch</a> · <a href="en.html">English</a></p>
+<div class="page">
+  <header class="top">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <a class="brand" href="#">SEFA</a>
+      <div class="lang">
+        <a href="https://sefa-app.ch">DE</a>
+        <a href="https://sefa-app.ch/tr">TR</a>
+        <a href="https://sefa-app.ch/en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div>
+          <h1>Geh hin.<br>Nicht allein,<br><span class="accent">gemeinsam.</span></h1>
+          <p class="lede">SEFA bringt Menschen in Zürich zusammen, die nicht allein zu einem Konzert, Festival oder ins Theater gehen möchten. Keine Dating-App — es geht um genau eine Sache: ein gemeinsames Erlebnis.</p>
+          <div class="cta-row">
+            <a class="btn play" href="https://play.google.com/store/apps/details?id=com.westinas.sefa" target="_blank" rel="noopener">
+              Google Play laden
+            </a>
+            <a class="btn apple" href="#">
+              App Store
+              <span class="badge">BALD</span>
+            </a>
+          </div>
+        </div>
+        <div class="signature">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+            <path class="path-line" d="M20 60 C 90 50, 140 110, 160 160" />
+            <path class="path-line" d="M300 50 C 230 70, 190 110, 160 160" />
+            <path class="path-line" d="M30 280 C 90 230, 130 200, 160 160" />
+            <circle class="origin-dot" cx="20" cy="60" r="5"/>
+            <circle class="origin-dot" cx="300" cy="50" r="5"/>
+            <circle class="origin-dot" cx="30" cy="280" r="5"/>
+            <circle class="meet-dot" cx="160" cy="160" r="8"/>
+            <text class="label" x="172" y="155">Treffpunkt</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-eyebrow">Aus der App</div>
+        <h2>Veranstaltung wählen, sehen wer hingeht, am Treffpunkt kennenlernen.</h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <img src="shot-home.png" alt="SEFA Veranstaltungsliste" loading="lazy">
+            <div class="showcase-cap">Veranstaltungen</div>
+          </div>
+          <div class="showcase-item raised">
+            <img src="shot-detail.png" alt="SEFA Veranstaltungsdetail" loading="lazy">
+            <div class="showcase-cap">Veranstaltungsdetail</div>
+          </div>
+          <div class="showcase-item">
+            <img src="shot-register.png" alt="SEFA Registrierung" loading="lazy">
+            <div class="showcase-cap">Konto erstellen</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-eyebrow">So funktioniert's</div>
+        <h2>In drei Schritten zu einer neuen Bekanntschaft.</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Veranstaltung wählen</h3>
+            <p>Finde Konzerte, Festivals, Theater und mehr in Zürich — Stöbern ist auch ohne Konto möglich.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>„Ich gehe mit" sagen</h3>
+            <p>Andere, die ebenfalls hingehen, werden sichtbar — du kannst ihre Profile ansehen, wenn du magst.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Am Treffpunkt kennenlernen</h3>
+            <p>Trefft euch vor der Veranstaltung am vereinbarten Treffpunkt und geht gemeinsam hinein.</p>
+          </div>
+        </div>
+
+        <div class="features-row">
+          <div class="feature">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14c-4.4 0-8 2-8 5v1h16v-1c0-3-3.6-5-8-5z"/></svg>
+            <h3>Anonyme Teilnahme</h3>
+            <p>Zuerst siehst du nur, wie viele hingehen — Profile ansehen ist optional.</p>
+          </div>
+          <div class="feature">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-5.2-9.5-9.3C.6 8.2 2.4 4.5 6 4.5c2 0 3.4 1.1 4 2.2.6-1.1 2-2.2 4-2.2 3.6 0 5.4 3.7 3.5 7.2C19 15.8 12 21 12 21z"/></svg>
+            <h3>Treffpunkt</h3>
+            <p>Vor der Veranstaltung wird ein gemeinsamer Treffpunkt und Status festgelegt.</p>
+          </div>
+          <div class="feature">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.5 8.5 0 11-3.8-7.1M21 11.5l-3-1-1 3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12c0 4.4 4 8 9 8" stroke-linecap="round"/></svg>
+            <h3>Kontrolliertes Chatten</h3>
+            <p>Im Together-Plan kannst du mit Teilnehmenden über sichere Vorlagen-Nachrichten kommunizieren.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <p>SEFA ist <span class="gold">keine Dating-App.</span><br>Es geht um genau eine Sache: ein gemeinsames Erlebnis.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">SEFA</div>
+          <p>Event-Begleitung in Zürich. Ein Westinas-Projekt.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Rechtliches</h4>
+            <a href="https://sefa-app.ch/privacy">Datenschutzerklärung</a>
+            <a href="https://sefa-app.ch/terms">Nutzungsbedingungen</a>
+            <a href="https://sefa-app.ch/child-safety">Kinderschutzstandards</a>
+          </div>
+          <div class="footer-col">
+            <h4>Kontakt</h4>
+            <a href="mailto:info@sefa-app.ch">info@sefa-app.ch</a>
+            <span>Neugasse 6, 8005 Zürich</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SEFA. Alle Rechte vorbehalten.</span>
+        <span>Ein Westinas-Projekt</span>
+      </div>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
