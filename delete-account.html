@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hesabımı Sil | SEFA</title>
+<meta name="description" content="SEFA hesap silme talebi sayfası" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#08281f;
+  --green-2:#0f4a36;
+  --sand:#c6a25e;
+  --sand-2:#e6d3ad;
+  --cream:#fbf6ea;
+  --cream-2:#f3ead8;
+  --ink:#0b1f18;
+  --muted:#68756f;
+  --line:rgba(8,40,31,.12);
+  --card:#fffdf7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 70% 8%,#f3ead8 0,#fbf6ea 26%,#fffaf0 62%,#f8f0df 100%);}
+a{color:var(--green-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(620px,calc(100% - 48px));margin:0 auto}
+header.top{padding:28px 0;border-bottom:1px solid var(--line)}
+.brand{font-family:"DM Serif Display",serif;font-size:24px;letter-spacing:.02em;color:var(--green)}
+main{padding:48px 0 80px}
+h1{font-family:"DM Serif Display",serif;font-size:32px;color:var(--green);margin:0 0 6px}
+.lead{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:32px}
+p{line-height:1.7;color:var(--ink);margin:0 0 14px;font-size:15.5px}
+ul{padding-left:20px;line-height:1.8;font-size:15.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;margin-top:28px}
+label{display:block;font-weight:600;font-size:13.5px;color:var(--green);margin-bottom:6px;margin-top:18px}
+input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:inherit;font-size:15px;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+.btn{display:inline-block;margin-top:22px;padding:13px 26px;border-radius:999px;background:var(--green);color:#fff;font-weight:700;font-size:15px;border:none;cursor:pointer}
+.btn:hover{background:var(--green-2)}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+.back{display:inline-block;margin-top:32px;font-size:14px;color:var(--green-2);font-weight:600}
+footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="container"><a class="brand" href="https://sefa-app.ch">SEFA</a></div>
+</header>
+<main>
+  <div class="container">
+    <h1>Hesabımı Sil</h1>
+    <p class="lead">SEFA hesabını ve ilişkili verilerini silmek istiyorsan, aşağıdaki formu doldurarak talebini gönderebilirsin. Talebin alındıktan sonra hesabın ve kişisel verilerin 30 gün içinde silinecektir.</p>
+
+    <p><strong>Hesap silindiğinde aşağıdakiler kalıcı olarak kaldırılır:</strong></p>
+    <ul>
+      <li>Profil bilgileri (ad, görünüm tercihleri, kategori tercihleri)</li>
+      <li>Katıldığın etkinliklere ait kayıtlar</li>
+      <li>Gönderdiğin mesajlar</li>
+      <li>Abonelik geçmişi (yasal saklama süreleri dışında)</li>
+    </ul>
+
+    <div class="card">
+      <form action="mailto:info@sefa-app.ch" method="get" enctype="text/plain">
+        <label for="email">Hesap E-postan</label>
+        <input type="email" id="email" name="Hesap E-postan" placeholder="ornek@email.com" required>
+
+        <label for="reason">Silme nedeni (opsiyonel)</label>
+        <textarea id="reason" name="Silme nedeni"></textarea>
+
+        <button class="btn" type="submit">Silme Talebi Gönder</button>
+        <p class="note">Bu form, mail uygulamanı açarak info@sefa-app.ch adresine taslak bir e-posta hazırlar. Göndermeden önce içeriği kontrol edip Gönder'e basman gerekir.</p>
+      </form>
+    </div>
+
+    <p class="note">Alternatif olarak doğrudan <a href="mailto:info@sefa-app.ch">info@sefa-app.ch</a> adresine "Hesap Silme Talebi" konulu bir e-posta gönderebilirsin.</p>
+
+    <a class="back" href="https://sefa-app.ch">← Ana sayfaya dön</a>
+  </div>
+</main>
+<footer>
+  <div class="container">© 2026 SEFA. Bir Westinas girişimidir.</div>
+</footer>
+</body>
+</html>

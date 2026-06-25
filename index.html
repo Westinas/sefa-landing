@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SEFA</title>
+<script>
+  (function () {
+    var lang = (navigator.language || 'en').toLowerCase();
+    var target = 'en.html';
+    if (lang.indexOf('de') === 0) target = 'de.html';
+    else if (lang.indexOf('tr') === 0) target = 'tr.html';
+    window.location.replace(target);
+  })();
+</script>
+<meta http-equiv="refresh" content="0; url=en.html">
+</head>
+<body>
+  <p><a href="tr.html">Türkçe</a> · <a href="de.html">Deutsch</a> · <a href="en.html">English</a></p>
+</body>
+</html>
